@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MatchActivity">
+
+    <TextView
+        android:id="@+id/teamOneLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Team A (Batting)"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/teamOneScore"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Score: 0/0"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/teamOneLabel"
+        android:padding="8dp"/>
+
+    <TextView
+        android:id="@+id/teamOneOvers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Overs: 0.0"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/teamOneLabel"
+        android:padding="8dp"/>
+
+    <!-- Team Two (Batting/Bowling) -->
+    <TextView
+        android:id="@+id/teamTwoLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Team B (Bowling)"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/teamOneScore"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/teamTwoScore"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Score: 0/0"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/teamTwoLabel"
+        android:padding="8dp"/>
+
+    <TextView
+        android:id="@+id/teamTwoOvers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Overs: 0.0"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/teamTwoLabel"
+        android:padding="8dp"/>
+
+    <TextView
+        android:id="@+id/ballByBallUpdates"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Lets Go!"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="12dp"
+        android:background="#E0E0E0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/teamTwoScore"
+        app:layout_constraintBottom_toTopOf="@id/playNextBallButton"/>
+
+    <Button
+        android:id="@+id/playNextBallButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/play_next_ball"
+        android:backgroundTint="@color/button_background"
+        android:textSize="18sp"
+        android:padding="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
