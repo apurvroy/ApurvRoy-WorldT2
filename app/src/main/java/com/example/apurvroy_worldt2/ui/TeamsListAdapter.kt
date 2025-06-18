@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.apurvroy_worldt2.R
 import com.example.apurvroy_worldt2.models.Team
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.checkbox.MaterialCheckBox
 
 class TeamsListAdapter(private val teams: List<Team>, private val onTeamClick: (Team) -> Unit) :
     RecyclerView.Adapter<TeamsListAdapter.TeamViewHolder>() {
@@ -23,29 +25,52 @@ class TeamsListAdapter(private val teams: List<Team>, private val onTeamClick: (
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
         val team = teams[position]
         holder.teamName.text = team.name
+        
+        // Update team status text based on selection state
+        val isSelected = selectedTeams.contains(team)
+        holder.teamStatus.text = if (isSelected) "Selected" else "Tap to select"
+        
+        // Update checkbox state
+        holder.teamCheckbox.isChecked = isSelected
+        
+        // Update card appearance for selection state without using isChecked
+        holder.teamCard.strokeWidth = if (isSelected) 2 else 1
+        holder.teamCard.strokeColor = if (isSelected) 
+            holder.itemView.context.getColor(R.color.md_theme_primary) 
+            else holder.itemView.context.getColor(R.color.team_card_stroke)
 
+        // Set background color based on selection
+        holder.teamCard.setCardBackgroundColor(
+            if (isSelected) holder.itemView.context.getColor(R.color.team_selected)
+            else holder.itemView.context.getColor(R.color.md_theme_surface)
+        )
+
+        // Load team flag with Glide
         Glide.with(holder.teamFlag.context)
             .load(team.flag)
             .placeholder(R.drawable.default_flag2)
             .error(R.drawable.default_flag2)
             .into(holder.teamFlag)
 
-        holder.itemView.setOnClickListener {
+        // Handle click events
+        holder.teamCard.setOnClickListener {
             onTeamClick(team)
             if (selectedTeams.contains(team)) {
                 selectedTeams.remove(team)
-                holder.itemView.setBackgroundResource(android.R.color.white)
             } else if (selectedTeams.size < 2) {
                 selectedTeams.add(team)
-                holder.itemView.setBackgroundResource(android.R.color.darker_gray)
             }
+            notifyItemChanged(position)
         }
     }
 
     override fun getItemCount() = teams.size
 
     class TeamViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val teamCard: MaterialCardView = view.findViewById(R.id.teamCardView)
         val teamName: TextView = view.findViewById(R.id.textTeamName)
+        val teamStatus: TextView = view.findViewById(R.id.textTeamStatus)
         val teamFlag: ImageView = view.findViewById(R.id.imageTeamFlag)
+        val teamCheckbox: MaterialCheckBox = view.findViewById(R.id.teamSelectionCheckbox)
     }
 }

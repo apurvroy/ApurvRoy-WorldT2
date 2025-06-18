@@ -1,103 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/md_theme_background"
     tools:context=".MatchActivity">
 
-    <TextView
-        android:id="@+id/teamOneLabel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Team A (Batting)"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:padding="8dp"
-        android:gravity="center"/>
-
-    <TextView
-        android:id="@+id/teamOneScore"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Score: 0/0"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/teamOneLabel"
-        android:padding="8dp"/>
-
-    <TextView
-        android:id="@+id/teamOneOvers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Overs: 0.0"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/teamOneLabel"
-        android:padding="8dp"/>
-
-    <!-- Team Two (Batting/Bowling) -->
-    <TextView
-        android:id="@+id/teamTwoLabel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Team B (Bowling)"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/teamOneScore"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:padding="8dp"
-        android:gravity="center"/>
-
-    <TextView
-        android:id="@+id/teamTwoScore"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Score: 0/0"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/teamTwoLabel"
-        android:padding="8dp"/>
-
-    <TextView
-        android:id="@+id/teamTwoOvers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Overs: 0.0"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/teamTwoLabel"
-        android:padding="8dp"/>
-
-    <TextView
-        android:id="@+id/ballByBallUpdates"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="Lets Go!"
-        android:textSize="60sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:padding="12dp"
-        android:background="#E0E0E0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/teamTwoScore"
-        app:layout_constraintBottom_toTopOf="@id/playNextBallButton"/>
-
-    <Button
-        android:id="@+id/playNextBallButton"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/play_next_ball"
-        android:backgroundTint="@color/button_background"
-        android:textSize="18sp"
-        android:padding="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:fitsSystemWindows="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/md_theme_primary"
+            app:title="Cricket Match"
+            app:titleTextColor="@color/md_theme_onPrimary"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- Team One Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/teamOneCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/md_theme_outline"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/md_theme_primaryContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/teamOneLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Team A (Batting)"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:textStyle="bold"
+                    android:textColor="@color/md_theme_onPrimaryContainer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/teamOneScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Score: 0/0"
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
+                    android:textColor="@color/md_theme_onPrimaryContainer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/teamOneLabel"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:id="@+id/teamOneOvers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Overs: 0.0"
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
+                    android:textColor="@color/md_theme_onPrimaryContainer"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/teamOneLabel"
+                    android:layout_marginTop="8dp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Team Two Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/teamTwoCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/md_theme_outline"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/md_theme_secondaryContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/teamOneCard">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/teamTwoLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Team B (Bowling)"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:textStyle="bold"
+                    android:textColor="@color/md_theme_onSecondaryContainer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/teamTwoScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Score: 0/0"
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
+                    android:textColor="@color/md_theme_onSecondaryContainer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/teamTwoLabel"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:id="@+id/teamTwoOvers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Overs: 0.0"
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
+                    android:textColor="@color/md_theme_onSecondaryContainer"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/teamTwoLabel"
+                    android:layout_marginTop="8dp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Match Updates Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/matchUpdatesCard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:strokeColor="@color/md_theme_outline"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/md_theme_tertiaryContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/teamTwoCard"
+            app:layout_constraintBottom_toTopOf="@id/playNextBallButton">
+
+            <TextView
+                android:id="@+id/ballByBallUpdates"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Let's Go!"
+                android:textAppearance="?attr/textAppearanceHeadlineLarge"
+                android:textStyle="bold"
+                android:textColor="@color/md_theme_onTertiaryContainer"
+                android:gravity="center"
+                android:padding="16dp"/>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Play Next Ball Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/playNextBallButton"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_margin="12dp"
+            android:text="@string/play_next_ball"
+            android:textSize="18sp"
+            app:cornerRadius="16dp"
+            app:elevation="8dp"
+            app:icon="@android:drawable/ic_media_play"
+            app:iconGravity="textStart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

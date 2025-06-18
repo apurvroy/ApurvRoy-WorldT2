@@ -10,4 +10,41 @@
     <color name="button_green">#03fc2c</color>
     <color name="light_grey">#D3D3D3</color>
     <color name="dark_grey">#A9A9A9</color>
+    
+    <!-- Material 3 colors - Cricket theme inspired (blue and green tones) -->
+    <color name="md_theme_primary">#1E6C3D</color>
+    <color name="md_theme_onPrimary">#FFFFFF</color>
+    <color name="md_theme_primaryContainer">#A6F4B7</color>
+    <color name="md_theme_onPrimaryContainer">#002110</color>
+    <color name="md_theme_secondary">#1B5F9C</color>
+    <color name="md_theme_onSecondary">#FFFFFF</color>
+    <color name="md_theme_secondaryContainer">#D3E4FF</color>
+    <color name="md_theme_onSecondaryContainer">#001C38</color>
+    <color name="md_theme_tertiary">#A93539</color>
+    <color name="md_theme_onTertiary">#FFFFFF</color>
+    <color name="md_theme_tertiaryContainer">#FFDAD9</color>
+    <color name="md_theme_onTertiaryContainer">#410008</color>
+    <color name="md_theme_error">#BA1A1A</color>
+    <color name="md_theme_errorContainer">#FFDAD6</color>
+    <color name="md_theme_onError">#FFFFFF</color>
+    <color name="md_theme_onErrorContainer">#410002</color>
+    <color name="md_theme_background">#FDFCF5</color>
+    <color name="md_theme_onBackground">#1A1C19</color>
+    <color name="md_theme_surface">#FDFCF5</color>
+    <color name="md_theme_onSurface">#1A1C19</color>
+    <color name="md_theme_surfaceVariant">#DEE4D9</color>
+    <color name="md_theme_onSurfaceVariant">#424940</color>
+    <color name="md_theme_outline">#727970</color>
+    <color name="md_theme_inverseOnSurface">#F0F1EB</color>
+    <color name="md_theme_inverseSurface">#2F312D</color>
+    <color name="md_theme_inversePrimary">#8AD79D</color>
+    <color name="md_theme_shadow">#000000</color>
+    <color name="md_theme_surfaceTint">#1E6C3D</color>
+    <color name="md_theme_outlineVariant">#C1C9BE</color>
+    <color name="md_theme_scrim">#000000</color>
+    
+    <!-- Team selection colors -->
+    <color name="team_selected">#D3E4FF</color>
+    <color name="team_unselected">#FDFCF5</color>
+    <color name="team_card_stroke">#C1C9BE</color>
 </resources>
